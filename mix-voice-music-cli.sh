@@ -1,6 +1,27 @@
-#!/bin/zsh
-echo "Music URL : "
-read URL
+#!/bin/bash
+PS3='Which music do you want to use ? :'
+options=("Acqua e Sapone" "Silk Road" "Your own URL")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Acqua e Sapone")
+            URL="https://ia600303.us.archive.org/15/items/pj007/2erobello.mp3"
+            break
+            ;;
+        "Silk Road")
+            URL="https://ia800704.us.archive.org/23/items/jamendo-001290/01.mp3"
+            break
+            ;;
+        "Your own URL")
+            echo "Enter URL of your own music : "
+            read URL
+            break
+            ;;        
+        *) echo "Not a good choice";;
+    esac
+done
+echo "The music URL is : "
+echo $URL
 echo "Text to read in French : "
 read TXT
 sox $URL /tmp/music.wav rate 22050
