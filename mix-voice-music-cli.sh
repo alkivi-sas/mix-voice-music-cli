@@ -1,7 +1,7 @@
 #!/bin/zsh
-echo "URL de la musique : "
+echo "Music URL : "
 read URL
-echo "Texte à faire lire : "
+echo "Text to read in French : "
 read TXT
 sox $URL /tmp/music.wav rate 22050
 say -v "Audrey" $TXT -o /tmp/voice.wav --data-format=LEI24 --channels=2
