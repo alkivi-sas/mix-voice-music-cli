@@ -1,7 +1,7 @@
 # mix-voice-music-cli
-Mix music and French synthetic voice by bash script on macOS
-We use Siri voice from Mac with Say command and an URL for the music
-We use fir for phone rings. So it's compressed with 8k rate.
+Mix music and French synthetic voice by bash script on macOS.
+We use Siri voice from Mac with Say command and an URL for the music.
+We use it for for phone rings. So it's compressed with 8k rate.
 
 ## We use SoX on macOS
 First of all, you have to install SoX
