@@ -8,7 +8,7 @@ First of all, you have to install SoX and Siri
 
    `$ brew install SoX`
    
-Afeter that, you can follow this tutorial http://osxdaily.com/2011/07/25/how-to-add-new-voices-to-mac-os-x/ to add Audrey's voice for french.
+After that, you can follow this tutorial http://osxdaily.com/2011/07/25/how-to-add-new-voices-to-mac-os-x/ to add Audrey's voice for french.
 
 ## Installation 
 You have to 
