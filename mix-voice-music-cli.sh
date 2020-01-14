@@ -30,19 +30,20 @@ echo "Le message sera répété $((OCCURENCE)) fois"
 echo "Combien de secondes doit faire la musique ? (0 = musique en entier): "
 read TEMPS
 sox $URL /tmp/music.wav rate 22050
+say -v "Audrey" $TXT -o /tmp/voice.wav --data-format=LEI24 --channels=2
+sox -n -r 22050 -c 2 /tmp/silence-30sec.wav trim 0.0 30
+sox -n -r 22050 -c 2 /tmp/silence-3sec.wav trim 0.0 3
+sox /tmp/silence-3sec.wav /tmp/voice.wav /tmp/silence-30sec.wav /tmp/voice-with-silence.wav
 if [ $TEMPS = "0" ]
 then
     echo "La musique sera jouée en entier"
 else
     echo "La musique sera coupée au bout de $((TEMPS)) sec"
     sox /tmp/music.wav /tmp/music-cropped.wav trim 0 $TEMPS
+    sox /tmp/voice-with-silence.wav /tmp/voice-with-silence-cropped.wav trim 0 $TEMPS
     mv -f /tmp/music-cropped.wav /tmp/music.wav
+    mv -f /tmp/voice-with-silence-cropped.wav /tmp/voice-with-silence.wav
 fi
-echo 
-say -v "Audrey" $TXT -o /tmp/voice.wav --data-format=LEI24 --channels=2
-sox -n -r 22050 -c 2 /tmp/silence-30sec.wav trim 0.0 30
-sox -n -r 22050 -c 2 /tmp/silence-3sec.wav trim 0.0 3
-sox /tmp/silence-3sec.wav /tmp/voice.wav /tmp/silence-30sec.wav /tmp/voice-with-silence.wav
 NBROCCURENCE=1
 until [ $NBROCCURENCE = $OCCURENCE ]
 do
